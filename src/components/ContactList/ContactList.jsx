@@ -4,7 +4,7 @@ import { ContactsCont, BtnDel, Name } from './ContactListStyled';
 export default function ContactList({ contacts, onDeleteContact }) {
   return (
     <ContactsCont>
-      {contacts.map(({ id, name, number }) => {
+      {contacts?.map(({ id, name, number }) => {
         return (
           <li key={id}>
             <p>
@@ -25,6 +25,6 @@ ContactList.propTypes = {
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
     })
-  ).isRequired,
+  ),
   onDeleteContact: PropTypes.func,
 };

@@ -8,7 +8,7 @@ import ContactList from './ContactList/ContactList';
 import { Container, Title1, Title2 } from './App.styled';
 
 export const App = () => {
-  const [contacts, setContacts] = useLocalStorage('contacts', '');
+  const [contacts, setContacts] = useLocalStorage('contacts', []);
 
   const [filter, setFilter] = useState('');
   const existedContact = (contacts, values) => {
@@ -39,7 +39,8 @@ export const App = () => {
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
 
-    return contacts.filter(contact =>
+    if (!contacts) return;
+    return contacts?.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
